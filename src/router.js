@@ -24,16 +24,20 @@ const router = new Router({
       path: '/home',
       name: 'home',
       component: Home,
-      //Atributo Customizable..para marcar la rutacon un disntitibo para usar:
+      
+   /*  Este meta ayuda a q te mande a logiartee
       meta:{
         requiereLogin:true
 
-      }
+      }*/
     },
     {
     path:'/create',
     name: 'create',
-    component: Create
+    component: Create,
+    meta:{
+      requiereLogin:true
+     }
     },
     {
       path: '/login',
@@ -48,7 +52,7 @@ router.beforeEach((to, from, next) =>{
   let user = Firebase.auth().currentUser;
   let authRequired = to.matched.some(route => route.meta.requiereLogin)
   if (!user && authRequired){
-    next ('login')
+    next ('home')
   }  else{
     next()
   }
