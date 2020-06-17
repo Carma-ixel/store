@@ -84,7 +84,7 @@ export default {
                 this.$router.push('/home')
         })
         .catch(() =>{
-          console.log('usuario no encontrado')
+          alert('usuario no encontrado')
         })
       }
     }
