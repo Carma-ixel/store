@@ -1,6 +1,6 @@
 <template>
   <div class="modal" v-bind:class="{'is-active':  showModal}">
-    <div class="modal-background"></div>
+   <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Estos son tus productos</p>

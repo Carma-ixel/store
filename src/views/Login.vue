@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <div class="columns">
       <div class="column is-one-third"></div>
       <div class="column is-one-third">
@@ -51,11 +51,8 @@
 
 <script>
 import Firebase from 'firebase';
-
-
 export default {
   name: '',
-  components: {},
   props: {},
   data() {
     return {
@@ -101,6 +98,9 @@ export default {
   padding: 2rem 1rem 0.5rem 1rem;
     margin-top: 70px;
     margin-bottom: auto;
-
+   
+}
+.login{
+ min-height: 600px;
 }
 </style>

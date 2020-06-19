@@ -1,10 +1,9 @@
 <template>
 <footer class="footer" >
-  <div class="content has-text-centered barMenu">
+  <div class="content has-text-centered">
     <p>
       <strong>STORE</strong> by <a href="https://github.com/Carma-ixel">Carmarí Barreto</a>.
       <strong>Todos los Derechos Reservados</strong>
-      
     </p>
   </div>
 </footer> 
@@ -22,10 +21,8 @@ export default {
     
 }
 </script>
-<style>
-.barMenu{
-   background-color: rgb(55, 56, 56);
-   color:white;
- }
-
+<style scoped>
+footer{
+   background-color:black;
+}
 </style>

@@ -2,6 +2,7 @@
   <div class="container">
     <cart-detail/>
     <products-list/>
+        
   </div>
 </template>
 
@@ -15,15 +16,6 @@ export default {
     ProductsList,
     CartDetail,
   },
-  props: {},
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  watch: {},
-  created() {},
-  mounted() {}
 }
 </script>
 
