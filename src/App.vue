@@ -31,6 +31,6 @@ export default {
 <style lang="scss">
 #app{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+ background-color: black;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
-    <div class="conta">
-        <div class="container content box">
+  <div class="conta">
+     <div class="container content box">
        <h1 class="title">Agregar Productos</h1>
          <div class="field">    
             <div class="control">
                <label class="label">Ingrese Nombre del Producto</label>
-               <input type="text"  class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
+               <input type="text" v-if="name == '' " class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
                 </div>
-              <div class="control">
+            <div class="control">
                  <label class="label">Ingrese el Precio $</label>
                 <input type='number'  class="input is-medium" v-model="price" placeholder='ingrese el valor $'><br>
              </div>
-             <div class="control">
+            <div class="control">
                 <label class="label">Adjunte el url de la Imagen del Producto</label>
                 <input type="text"  class="input is-medium" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
-             </div>  
+            </div>  
              <div class="control"> 
                 <button class="button is-primary" @click="createProducts"> Añadir</button>
                 <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>
@@ -42,7 +42,7 @@
               <button class="button btn-success" @click="editProduct(p.id)">Editar</button>
               </td>
               <td>
-                  <button class="button btn-danger" @click="deleteProduct(p.id)" >Borrar</button>
+                  <button class="button btn-danger" @click="deleteProduct(p.id)">Borrar</button>
                   <span class="icon has-text-danger">
                      <i class="fas fa-ban"></i>
                      </span>
@@ -72,12 +72,14 @@ export default {
             let send = {
                 name: this.name,
                 picture: this.picture,
-                price: this.price
+                price: this.price,     
             }
             axios.post('https://us-central1-tdddg3.cloudfunctions.net/products/product',send,
             {headers:{'content-type':'application/json'}})
-            .then((response) =>{
-                console.log(response);
+             .then(() =>{
+                this.name = ''
+                this.picture = ''
+                this.price = ''
                 this.$store.dispatch('getProducts')
             })
             .catch((error) =>{

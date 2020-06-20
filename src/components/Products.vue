@@ -5,7 +5,7 @@
         <div class="container">
           <div style="display: inline-block;">
             <h1 class="title">
-              Nuestros Productos
+              Universo de Plantas para ti.
             </h1>
             <h2 class="subtitle">
               Todo lo mejor está aquí
@@ -116,9 +116,11 @@ export default {
 .hero{
   margin-top: 50px;
   padding-bottom: 30px;
-background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+
+background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
 
 }
+
 
 
 
