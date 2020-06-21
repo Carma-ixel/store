@@ -2,7 +2,7 @@
 <footer class="footer" >
   <div class="content has-text-centered">
     <p>
-      <strong>STORE</strong> by <a href="https://github.com/Carma-ixel">Carmarí Barreto</a>.
+      <strong>STORE</strong> by <a href="https://github.com/Carma-ixel">Carmarí Barreto</a><br>
       <strong>Todos los Derechos Reservados</strong>
     </p>
   </div>
@@ -10,19 +10,21 @@
 </template>
 <script>
 export default {
-     name: '',
-  components: {},
+  name: 'Footer',
   props: {
     brand: {
       type: String,
       default: '',
     },
-  },
-    
+  },   
 }
 </script>
 <style scoped>
-footer{
-   background-color:black;
-}
+  footer{
+
+      background-image: linear-gradient(to right, #0ba360 0%, #3cba92 100%);
+  }
+  a{
+    color: white
+  }
 </style>

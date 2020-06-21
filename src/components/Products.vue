@@ -4,10 +4,10 @@
       <div class="hero-body">
         <div class="container">
           <div style="display: inline-block;">
-            <h1 class="title" :style="{color: textColor}">
+            <h1 class="title is-2" :style="{color: textColor}">
               Universo de Plantas para ti.
             </h1>
-            <h2 class="subtitle">
+            <h2 class="subtitle" :style="{color: textColor}" >
               Todo lo mejor está aquí
             </h2>
           </div>
@@ -38,7 +38,7 @@
           </div>
           <div class="card-content">
             <div class="content">
-              <h3 class="title is-primary">{{ p.data.name }}</h3>
+              <h3 class="title" :style="{color: textColor}">{{ p.data.name }}</h3>
               <p class="subtitle">$ {{p.data.price * p.qty }}</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada.</p>
               <div class="counter">
@@ -63,15 +63,12 @@
 import {mapState} from 'vuex';
 
 export default {
-
   components: {},
-  props: {},
- 
+  props: {}, 
   data(){
     return {
       search: '',
-      textColor: 'blue',
-    
+      textColor: '#4c7210', 
     }
   },
   methods: {
@@ -112,7 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .card{
   margin-top: 3em;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);

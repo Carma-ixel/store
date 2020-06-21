@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div class="container content box">
+     <div class="container content box col">
        <h1 class="title">Agregar Productos</h1>
          <div class="field">  
            <span v-if="formHasErrors" class="has-text-danger">
@@ -19,13 +19,13 @@
                 <label class="label">Adjunte el url de la Imagen del Producto</label>
                 <input type="text"  class="input is-medium" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
             </div>  
-             <div class="control"> 
-                <button class="button is-primary" @click="createProducts"> Añadir</button>
-                <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>
-             </div>    
+            <div class="buttons">
+                <button class="button is-success" @click="createProducts">Añadir</button>
+                <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>  
+            </div>    
           </div>
      </div>
-        <table class="table is-striped container">
+        <table class="table is-striped container col">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -42,11 +42,10 @@
                  <td>{{ p.data.price }}</td>
                  <td> {{ p.data.picture.substring(0,50) }}</td>
                  <td>
-              <button class="button btn-success" @click="editProduct(p.id)">Editar</button>
+              <button class="button is-primary" @click="editProduct(p.id)">Editar</button>
               </td>
               <td>
-                  <button class="button btn-danger" @click="deleteProduct(p.id)">Borrar</button>
-                  <span class="icon has-text-danger"><i class="fas fa-ban"></i></span>
+                  <button class="button is-danger" @click="deleteProduct(p.id)">Borrar</button>
               </td>
               </tr>
             </tbody>   
@@ -173,7 +172,8 @@ export default {
 input{
     margin-bottom: 1em;
 }
-h1{
-    color: #00d1b2,
+.col{
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
+
 </style>
