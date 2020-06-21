@@ -55,7 +55,6 @@
         </div>
       </div> <!-- End Item  -->
     </div>
-    <!--  -->
   </div>
 </template>
 
@@ -110,7 +109,8 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-  margin-top: 3em;
+  margin-top: 2.1em;
+  margin-bottom: 1.5em;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 .hero{

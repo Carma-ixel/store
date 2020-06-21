@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Firebase from 'firebase'
 import Home from './views/Home.vue'
 import Create from './components/Create.vue'
+import NotFound from './components/NotFound.vue'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+    },
+    {
+      path: '/*',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })
