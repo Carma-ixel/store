@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <section class="hero  is-bold">
+  <div class="container ">
+    <section class="hero is-medium is-bold">
       <div class="hero-body">
         <div class="container">
           <div style="display: inline-block;">
-            <h1 class="title">
+            <h1 class="title" :style="{color: textColor}">
               Universo de Plantas para ti.
             </h1>
             <h2 class="subtitle">
@@ -28,7 +28,7 @@
       </div>
     </section>
     <div class="columns is-multiline">
-      <div class="column is-4" v-for="p in computedProductList" :key="p.id">
+      <div class="column is-3" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height">
           <div class="image-card">
@@ -38,7 +38,7 @@
           </div>
           <div class="card-content">
             <div class="content">
-              <h3 class="title">{{ p.data.name }}</h3>
+              <h3 class="title is-primary">{{ p.data.name }}</h3>
               <p class="subtitle">$ {{p.data.price * p.qty }}</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada.</p>
               <div class="counter">
@@ -63,11 +63,15 @@
 import {mapState} from 'vuex';
 
 export default {
+
   components: {},
   props: {},
-  data() {
+ 
+  data(){
     return {
       search: '',
+      textColor: 'blue',
+    
     }
   },
   methods: {
@@ -110,25 +114,24 @@ export default {
 <style lang="scss" scoped>
 
 .card{
-  margin-top: 2em;
+  margin-top: 3em;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
-
 .hero{
-  margin-top: 50px;
-  padding-bottom: 30px;
-
-background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
-
+  margin-top: 2em;
+  padding-bottom: 2em;
+  background-image: url('../assets/bg.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color:#f5f6f8;
 }
-
-
-
-
 .counter {
   display: inline-block;
   button {
     text-align: center;
     border-radius: 50%;
+    border-color: #00c4a7;
     height: 2rem;
     width: 2rem;
     cursor: pointer;

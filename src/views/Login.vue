@@ -5,7 +5,6 @@
       <div class="column is-one-third">
         <div class="login-container card">
           <form>
-            <!-- Field email -->
             <div class="field">
               <!-- Error -->
               <span v-if="formHasErrors" class="has-text-danger">

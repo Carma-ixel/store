@@ -59,14 +59,16 @@
               <a class="navbar-item x" @click="logout">
                 Cerrar Sesión
               </a>
-              <router-link to="/create" class="x"  @click="displayMenu = !displayMenu">Añadir Producto
-              </router-link>
+              <!--Ruta para los el Create y crear productos-->
+              <hr class="navbar-divider">
+              <a class="navbar-item x">
+               <router-link to="/create" class="x"  @click="displayMenu = !displayMenu">Añadir Producto</router-link>
+              </a>  
             </div>
           </div>
         </div>
       </div>
-    <!--  -->
-    </div> <!-- container -->
+    </div> 
   </nav>
 </template>
 
@@ -121,23 +123,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a, i {
-  color: white;
-}
 nav{
   height: 3.25rem;
-  background-color: rgb(55, 56, 56);
   position: fixed;
   top: 0;
   width: 100%;
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
  }
- #navbarMenu{
-   background-color: rgb(55, 56, 56);
-
- }
-
-.navbar-dropdown{
-background-color: rgb(55, 56, 56);
-}
 
 </style>

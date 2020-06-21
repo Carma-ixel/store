@@ -4,12 +4,8 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-function setInStorage(key, obj) {
-  localStorage.setItem(key, JSON.stringify(obj))
-}
-function getFromStorage(key) {
-  return JSON.parse(localStorage.getItem(key))
-}
+function setInStorage(key, obj) { localStorage.setItem(key, JSON.stringify(obj))}
+function getFromStorage(key) { return JSON.parse(localStorage.getItem(key))}
 function getCartTotal(productsList) {
   let price = 0.0
   productsList.forEach(p => {
@@ -17,6 +13,7 @@ function getCartTotal(productsList) {
   })
   return price
 }
+
 function newCart() {
   return {
     list: [],
@@ -39,50 +36,44 @@ export default new Vuex.Store({
   },
   mutations: {
 //NUEVOOOOOOOOOOOOO
-LOADING_PRODUCTS(state){
-  state.loading = !state.loading
-},
-GET_PRODUCTS(state, products){
-  state.products = []
-  products.forEach((prod) =>{
-    prod['qty'] = 1
-    state.products.push(prod)
-  })
-  state.loading = false
-},
-    // User
-    UPDATE_CURR_USER(state, user) {
-      state.currentUser = user
-      setInStorage('user', user)
+    LOADING_PRODUCTS(state){state.loading = !state.loading},
+    GET_PRODUCTS(state, products){
+      state.products = []
+       products.forEach((prod) =>{
+          prod['qty'] = 1
+          state.products.push(prod)
+        })
+      state.loading = false
     },
-    // Cart
+    UPDATE_CURR_USER(state, user) {
+    state.currentUser = user
+        setInStorage('user', user)
+    },
     ADD_TO_CART(state, product) {
-      // add def qty if not defined
       if (product.qty === undefined ) { product['qty'] = 1 }
-      // increase qty if exists, else add to cart as new
-      let pidx = state.shoppingCart.list.map(p => p.id).indexOf(product.id)
-      if (pidx >= 0) {
-        state.shoppingCart.list[pidx].qty++
-      } else {
-        state.shoppingCart.list.push(product)
-      }
-      // update total price
-      state.shoppingCart.total = getCartTotal(state.shoppingCart.list)
-      // update in storage
-      setInStorage('cart', state.shoppingCart)
+       let pidx = state.shoppingCart.list.map(p => p.id).indexOf(product.id)
+        if (pidx >= 0) {
+          state.shoppingCart.list[pidx].qty++
+        } else {
+          state.shoppingCart.list.push(product)
+        }
+        // update total price
+       state.shoppingCart.total = getCartTotal(state.shoppingCart.list)
+        // update in storage
+       setInStorage('cart', state.shoppingCart)
     },
     REMOVE_FROM_CART(state, product_id) {
-      let pidx = state.shoppingCart.list.map(p => p.id).indexOf(product_id)
-      if (pidx >= 0) {
-        state.shoppingCart.list.splice(pidx, 1)
-        // update total price
-        state.shoppingCart.total = getCartTotal(state.shoppingCart.list)
-        // update in storage
-        setInStorage('cart', state.shoppingCart)
-      } else {
-        throw new Error("Product not found in cart")
-      }
-    },
+        let pidx = state.shoppingCart.list.map(p => p.id).indexOf(product_id)
+        if (pidx >= 0) {
+          state.shoppingCart.list.splice(pidx, 1)
+          // update total price
+          state.shoppingCart.total = getCartTotal(state.shoppingCart.list)
+          // update in storage
+          setInStorage('cart', state.shoppingCart)
+        } else {
+          throw new Error("Product not found in cart")
+        }
+      },
     CLEAR_CART(state) {
       state.shoppingCart = newCart()
       // update in storage
@@ -139,12 +130,12 @@ GET_PRODUCTS(state, products){
         } catch(e) { reject(e) }
       })
     },
-    //NUEEEEVVOOOOOO nuevooo
+    //LLamado de los productos 
     getProducts({commit}){
-    //se Carga la mutación
-    commit('ON_OVERLAY')
+    //Mutación de carga con el process
+      commit('ON_OVERLAY')
       commit('LOADING_PRODUCTS')
-      //variable para cargar o no cargar información
+      //Llamado a la base de datos y traer información
       axios.get (`https://us-central1-tdddg3.cloudfunctions.net/products/products`, {
         headers:{
           "Content-type": "text/plain"
@@ -152,7 +143,7 @@ GET_PRODUCTS(state, products){
       }).then((accept) =>{
       //variable auxiliar
       let data = accept.data;
-      //llamar otra mutación
+      //llamar otra mutación conjunto que inyecta los productos y la otra que cierra el overlay
       commit('GET_PRODUCTS', data)
       }).finally(() =>{
         commit('OFF_OVERLAY')
@@ -161,10 +152,10 @@ GET_PRODUCTS(state, products){
     
   },
   getters: {
-    // User
+    // Acceso Usuarios
     isLoggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
-    // Cart
+    // Carrito
     shoppingCart: state => state.shoppingCart,
     showCart: state => state.showCart,
   }

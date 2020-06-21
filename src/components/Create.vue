@@ -1,15 +1,19 @@
 <template>
-  <div class="conta">
+  <div>
      <div class="container content box">
        <h1 class="title">Agregar Productos</h1>
-         <div class="field">    
+         <div class="field">  
+           <span v-if="formHasErrors" class="has-text-danger">
+                <i class="mdi mdi-alert"></i>
+               Por favor, complete todos los campos
+              </span>  
             <div class="control">
                <label class="label">Ingrese Nombre del Producto</label>
-               <input type="text" v-if="name == '' " class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
+               <input type="text" class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
                 </div>
             <div class="control">
                  <label class="label">Ingrese el Precio $</label>
-                <input type='number'  class="input is-medium" v-model="price" placeholder='ingrese el valor $'><br>
+                <input type='number'   class="input is-medium" v-model="price" placeholder='ingrese el valor $'><br>
              </div>
             <div class="control">
                 <label class="label">Adjunte el url de la Imagen del Producto</label>
@@ -20,12 +24,11 @@
                 <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>
              </div>    
           </div>
-        </div>
-
-        <table class="table table-striped">
+     </div>
+        <table class="table is-striped container">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Nombre del Producto</th>
                     <th>Precio</th>
                     <th>Imagen</th>
@@ -33,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="p in computedProductList" :key="p.id">
+              <tr v-for="p in computedProductList" :key="p.id">
                  <td>{{ p.id }}</td>
                  <td>{{ p.data.name }}</td>
                  <td>{{ p.data.price }}</td>
@@ -43,9 +46,7 @@
               </td>
               <td>
                   <button class="button btn-danger" @click="deleteProduct(p.id)">Borrar</button>
-                  <span class="icon has-text-danger">
-                     <i class="fas fa-ban"></i>
-                     </span>
+                  <span class="icon has-text-danger"><i class="fas fa-ban"></i></span>
               </td>
               </tr>
             </tbody>   
@@ -63,28 +64,42 @@ export default {
             name:'',
             picture: '',
             price: '',
-            id: undefined
+            id: undefined,
+          formHasErrors: false
         }
     },
     methods:{
          ...mapActions(['updateEdit']),
+        isValid(){
+        if (this.name || this.price || this.picture) {
+          this.formHasErrors = false
+        return true;
+          }
+          this.formHasErrors = [];
+          if (!this.name || !this.price || !this.picture) {
+            this.formHasErrors
+          }
+        },
         createProducts(){
             let send = {
                 name: this.name,
                 picture: this.picture,
                 price: this.price,     
             }
-            axios.post('https://us-central1-tdddg3.cloudfunctions.net/products/product',send,
-            {headers:{'content-type':'application/json'}})
-             .then(() =>{
-                this.name = ''
-                this.picture = ''
-                this.price = ''
-                this.$store.dispatch('getProducts')
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
+            if(this.isValid()){
+              axios.post('https://us-central1-tdddg3.cloudfunctions.net/products/product',send,
+              {headers:{'content-type':'application/json'}})
+               .then(() =>{
+                  this.name = ''
+                  this.picture = ''
+                  this.price = ''
+                  this.$store.dispatch('getProducts')
+              })
+              .catch((error) =>{
+                  console.log(error);
+              });
+
+            }
          },
         deleteProduct(id){
             let confirmation = confirm("Estaiii seguroo??")       
