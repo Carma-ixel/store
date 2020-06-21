@@ -4,9 +4,9 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-function setInStorage(key, obj) { localStorage.setItem(key, JSON.stringify(obj))}
-function getFromStorage(key) { return JSON.parse(localStorage.getItem(key))}
-function getCartTotal(productsList) {
+function setInStorage(key, obj) { localStorage.setItem(key, JSON.stringify(obj))} //enviar producto al carrito
+function getFromStorage(key) { return JSON.parse(localStorage.getItem(key))} //muostrar items carrito
+function getCartTotal(productsList) { //obtener total 
   let price = 0.0
   productsList.forEach(p => {
     price += p.data.price * p.qty
@@ -14,7 +14,7 @@ function getCartTotal(productsList) {
   return price
 }
 
-function newCart() {
+function newCart() { //resetear carrito
   return {
     list: [],
     total: 0.0,
@@ -22,20 +22,18 @@ function newCart() {
 }
 
 export default new Vuex.Store({
-  state: {
+  state: { // la fuente de datos de los componentes
     // User
     currentUser: getFromStorage('user') || undefined,
     // Cart
     shoppingCart: getFromStorage('cart') || newCart(),
     showCart: false,
-    ///NUUUEEEEVVVVOOOOOOO
     products: [],
     loading: false,
     edit: false,
     overlay: false,
   },
-  mutations: {
-//NUEVOOOOOOOOOOOOO
+  mutations: {//funciones que modifican los estados (metodos)
     LOADING_PRODUCTS(state){state.loading = !state.loading},
     GET_PRODUCTS(state, products){
       state.products = []
@@ -84,7 +82,7 @@ export default new Vuex.Store({
     ON_OVERLAY(state){state.overlay = true},
     OFF_OVERLAY(state){state.overlay = false}
   },
-  actions: {
+  actions: { // las acciones ejecutan las  mutaciones las cuales realizan el cambio y realizan operaciones asincronas
     updateEdit({commit}){
       commit('UPDATE_EDIT')
     },
@@ -151,11 +149,11 @@ export default new Vuex.Store({
     }
     
   },
-  getters: {
+  getters: { //son metodos computados
     // Acceso Usuarios
     isLoggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
-    // Carrito
+    // Carrito, mostrar agregar
     shoppingCart: state => state.shoppingCart,
     showCart: state => state.showCart,
   }

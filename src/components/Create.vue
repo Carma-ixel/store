@@ -101,7 +101,7 @@ export default {
             }
          },
         deleteProduct(id){
-            let confirmation = confirm("Estaiii seguroo??")       
+            let confirmation = confirm("Segurito Segurito quiere borrarlo??")       
             if(confirmation){
                 axios.delete(`https://us-central1-tdddg3.cloudfunctions.net/products/product/${id}`,
                  {headers:{'content-type':'application/json'}}) 
