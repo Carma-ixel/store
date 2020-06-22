@@ -1,7 +1,7 @@
 # Stranger_Plants
 
 ## Descripción
-Proyecto Ecommerce basado en la comercialización de plantas exoticas y extrañas.
+Proyecto Ecommerce basado en la comercialización de plantas exóticas y extrañas.
 
 >## Comenzando el proyecto
 

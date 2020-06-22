@@ -8,7 +8,7 @@
               Universo de Plantas para ti.
             </h1>
             <h2 class="subtitle" :style="{color: textColor}" >
-              Las plantas más exoticas y extrañas están aquí
+              Las plantas más exóticas y extrañas están aquí
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-      </div> <!-- End Item  -->
+      </div> 
     </div>
   </div>
 </template>
