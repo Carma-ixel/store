@@ -8,7 +8,7 @@
                Por favor, complete todos los campos
               </span>  
             <div class="control">
-               <label class="label">Ingrese Nombre del Producto</label>
+               <label class="label">Ingrese Nombre de la Planta</label>
                <input type="text" class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
                 </div>
             <div class="control">
@@ -16,9 +16,9 @@
                 <input type='number'   class="input is-medium" v-model="price" placeholder='ingrese el valor $'><br>
              </div>
             <div class="control">
-                <label class="label">Adjunte el url de la Imagen del Producto</label>
+                <label class="label">Adjunte el url de la Imagen de la Planta</label>
                 <input type="text"  class="input is-medium" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
-            </div>  
+            </div>
             <div class="buttons">
                 <button class="button is-success" @click="createProducts">Añadir</button>
                 <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>  
@@ -69,7 +69,7 @@ export default {
     },
     methods:{
          ...mapActions(['updateEdit']),
-        isValid(){
+        Valid(){
         if (this.name || this.price || this.picture) {
           this.formHasErrors = false
         return true;
@@ -85,7 +85,7 @@ export default {
                 picture: this.picture,
                 price: this.price,     
             }
-            if(this.isValid()){
+            if(this.Valid()){
               axios.post('https://us-central1-tdddg3.cloudfunctions.net/products/product',send,
               {headers:{'content-type':'application/json'}})
                .then(() =>{

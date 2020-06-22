@@ -22,7 +22,7 @@ function newCart() { //resetear carrito
 }
 
 export default new Vuex.Store({
-  state: { // la fuente de datos de los componentes
+  state: { 
     // User
     currentUser: getFromStorage('user') || undefined,
     // Cart
@@ -33,7 +33,7 @@ export default new Vuex.Store({
     edit: false,
     overlay: false,
   },
-  mutations: {//funciones que modifican los estados (metodos)
+  mutations: {
     LOADING_PRODUCTS(state){state.loading = !state.loading},
     GET_PRODUCTS(state, products){
       state.products = []
@@ -64,9 +64,7 @@ export default new Vuex.Store({
         let pidx = state.shoppingCart.list.map(p => p.id).indexOf(product_id)
         if (pidx >= 0) {
           state.shoppingCart.list.splice(pidx, 1)
-          // update total price
           state.shoppingCart.total = getCartTotal(state.shoppingCart.list)
-          // update in storage
           setInStorage('cart', state.shoppingCart)
         } else {
           throw new Error("Product not found in cart")
@@ -74,7 +72,6 @@ export default new Vuex.Store({
       },
     CLEAR_CART(state) {
       state.shoppingCart = newCart()
-      // update in storage
       setInStorage('cart', state.shoppingCart)
     },
     UPDATE_SHOW_CART(state, value) {state.showCart = value },
@@ -82,7 +79,7 @@ export default new Vuex.Store({
     ON_OVERLAY(state){state.overlay = true},
     OFF_OVERLAY(state){state.overlay = false}
   },
-  actions: { // las acciones ejecutan las  mutaciones las cuales realizan el cambio y realizan operaciones asincronas
+  actions: { // realizan el cambio y operaciones asincronas
     updateEdit({commit}){
       commit('UPDATE_EDIT')
     },
@@ -120,17 +117,17 @@ export default new Vuex.Store({
       })
     },
     updateShowCart({commit}, val) {
-      console.log('setting showCart to ', val)
+      console.log('setting showCart to', val)
       return new Promise((resolve, reject) => {
         try {
-          commit('UPDATE_SHOW_CART', !!val) // !! double-negation for Boolen casting
+          commit('UPDATE_SHOW_CART', !!val) 
           resolve(true)
         } catch(e) { reject(e) }
       })
     },
     //LLamado de los productos 
     getProducts({commit}){
-    //Mutación de carga con el process
+    //Mutación de carga con el process y lo prodcuts
       commit('ON_OVERLAY')
       commit('LOADING_PRODUCTS')
       //Llamado a la base de datos y traer información
@@ -146,8 +143,7 @@ export default new Vuex.Store({
       }).finally(() =>{
         commit('OFF_OVERLAY')
       })
-    }
-    
+    }    
   },
   getters: { //son metodos computados
     // Acceso Usuarios

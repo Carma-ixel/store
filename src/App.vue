@@ -1,6 +1,6 @@
 <template>
  <div id="app">
-  <navbar :brand="'My Store'"/>
+  <navbar :brand="'Stranger Plants'"/>
     <div class="modal" :class="{'is-active': overlay}" >
       <div class="modal-background"></div>
         <div class="modal-content">
