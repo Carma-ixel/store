@@ -54,6 +54,9 @@ npm run test:e2e
 _Para ver más proyectos ingresa en GibHub:_
 https://github.com/Carma-ixel
 
+>## Deploy del proyecto:
+
+https://tdddg3.web.app
 
 # Stranger_Plants (English)
 
@@ -105,4 +108,9 @@ npm run test:e2e
 - Carmarí Barreto
 _To see more projects go to GibHub:_
 https://github.com/Carma-ixel
+
+>###  Deploy project:
+
+https://tdddg3.web.app
+
 
