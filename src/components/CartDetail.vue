@@ -3,7 +3,7 @@
    <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Estos son tus productos</p>
+        <p class="modal-card-title">Estas son tus Plantas</p>
         <button class="delete" aria-label="close" @click="showModal=false"></button>
       </header>
       <section class="modal-card-body">
@@ -15,8 +15,8 @@
                   <div class="media">
                     <!-- img -->
                     <div class="media-left">
-                      <figure class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                      <figure class="image is-128x128">
+                        <img :src= p.data.picture  alt="Placeholder image">
                       </figure>
                     </div>
                     <!-- product -->
@@ -48,13 +48,12 @@
               </p>
             </div>
             <div>
-              <button class="button is-warning" @click="$store.dispatch('clearCart')">
-                Vaciar Carrito
+              <button class="button is-danger" @click="$store.dispatch('clearCart')">
+                Eliminar todo del Carrito
               </button>
             </div>
           </div>
         </div>
-        <!-- Content ... -->
       </section>
       <footer class="modal-card-foot">
         <button class="button is-primary" @click="showModal=false">Volver</button>

@@ -8,7 +8,7 @@
               Universo de Plantas para ti.
             </h1>
             <h2 class="subtitle" :style="{color: textColor}" >
-              Todo lo mejor está aquí
+              Las plantas más exoticas y extrañas están aquí
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">

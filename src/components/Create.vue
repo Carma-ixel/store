@@ -70,12 +70,12 @@ export default {
     methods:{
          ...mapActions(['updateEdit']),
         Valid(){
-        if (this.name || this.price || this.picture) {
+        if (this.name && this.price && this.picture) {
           this.formHasErrors = false
         return true;
           }
           this.formHasErrors = [];
-          if (!this.name || !this.price || !this.picture) {
+          if (!this.name && !this.price && !this.picture) {
             this.formHasErrors
           }
         },
